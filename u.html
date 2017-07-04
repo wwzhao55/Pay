@@ -1,0 +1,738 @@
+<html>
+<head>
+	<title>用户签约</title>
+	<meta name="viewport" content="width=750, user-scalable=no">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="resource/weui/css/jquery-weui.min.css">
+	<link rel="stylesheet" type="text/css" href="resource/css/readme.css">
+	<script src="resource/js/jquery.min.js"></script>
+	<script src="resource/js/ajaxFileUpload.js"></script>
+	<script src='https://res.wx.qq.com/open/js/jweixin-1.0.0.js'></script>
+	<script src="resource/layer/layer.js"></script>
+	<script src="resource/weui/js/jquery-weui.min.js"></script>
+	<script src="resource/js/readme.js"></script>
+	<style type="text/css">
+		#cnzz_stat_icon_1261123689 {
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div id='regisiter'>
+		<div class='input_list'>
+			<span class='input_lable'>姓名:</span>
+			<input class='input_box' type='text' id='name'>
+		</div>
+		<div class='input_list'>
+			<span class='input_lable'>手机号:</span>
+			<input class='input_box' type='text' id='phone'>
+		</div>
+		<div class='input_list'>
+			<span class='input_lable'>验证码:</span>
+			<input class='input_box' type='text' id='code'>
+			<button class='code' onclick="sendMessage(this)" id='btn'>获取验证码</button>
+		</div>
+		<div class='card'>
+			<span class='img_title'>身份证正反面照片：</span>
+			<form  action='/submit.php' id="front_form" enctype="multipart/form-data">
+				<div class='pic_container' style='margin-right:30px;'>
+					<img src='' class='img_show img_show1' hidden>
+					<img src='resource/images/add.png' class='img_upload' id='add_front'> 
+					<input hidden type='text' name='ID_card_front' id='front'>
+					<span class='img_tip tip1'>（正面）</span> 
+				</div>
+			</form>
+			<form  action='/submit.php' id="back_form" enctype="multipart/form-data">
+				<div class='pic_container'>
+					<img src='' class='img_show img_show2' hidden>
+					<img src='resource/images/add.png' class='img_upload' id='add_back'>  
+					<input hidden type='text'  name='ID_card_back' id='back'>
+					<span class='img_tip tip2'>（反面）</span>
+				</div>
+			</form>
+			<form  action='/submit.php' id="back_form" enctype="multipart/form-data">
+				<div class='pic_container' style="margin-left: 175px;margin-top: 30px;">
+					<img src='' class='img_show img_show3' hidden>
+					<img src='resource/images/add.png' class='img_upload' id='add_license'>  
+					<input hidden type='text'  name='license' id='license'>
+					<span class='img_tip tip3'>（营业执照）（可选项）</span>
+				</div>
+			</form>
+		</div>
+		<div class='pic_bottom'>
+			<img src='resource/images/drop_down.png'>
+		</div>
+	</div>
+	<div id='agreement' hidden>
+		<span class='agreement_title'>《收钱吧商户服务协议》</span>
+		<div class='agreement_text'>
+			<p>收钱吧（以下简称本服务）服务是由上海喔噻互联网科技有限公司向收钱吧商户提供的收钱吧软件系统（以下简称本系统）服务。本协议由贵司与本公司签订。</p>
+
+			<p>一、声明与承诺</p>
+
+			<p>（一）本协议已对与您的权益有或可能具有重大关系的条款，及对本公司具有或可能具有免责或限制责任的条款用粗体字予以标注，请您注意。您确认，在您注册成为收钱吧商户以接受本服务，或您以其他本公司允许的方式实际使用本服务前，您已充分阅读、理解并接受本协议的全部内容，一旦您使用本服务，即表示您同意遵循本协议之所有约定。</p>
+			<p>（二）您同意，本公司有权随时对本协议内容进行单方面的变更，并以在www.shouqianba.com网站公告的方式予以公布，无需另行单独通知您；若您在本协议内容公告变更后继续使用本服务的，表示您已充分 阅读、理解并接受修改后的协议内容，也将遵循修改后的协议内容使用本服务；若您不同意修改后的协议内容，您应停止使用本服务。</p>
+			<p>（三）您保证，在您同意接受本协议并注册成为收钱吧商户时，您已经年满16周岁，或者您是在中国大陆地区合法开展经营活动或其他业务的法人或其他组织；本协议内容 不受您所属国家或地区法律的排斥。不具备前述条件的，您应立即终止注册或停止使用本服务。您在使用收钱吧服务时，应自行判断对方是否是完全民事行为能力人并自行决定是否 与对方进行交易，且您应自行承担与此相关的所有风险。</p>
+
+			<p>二、定义及解释</p>
+
+			<p>（一）收钱吧服务：指的是本公司为客户提供的智能系统应用平台，包括“收钱吧”PIN输入终端设备、智能APP应用、POS终端、本公司官方网站（www.shouqianba.com）相关页面内容（不包括对外链接网站或网页的内容），及其他相关网络服务器、电子文档、印刷材料等。</p>
+			<p>（二）收款服务：收钱吧提供的软件系统及相关款项收付服务。服务主要指</p>
+			<p>l 支付宝收款服务</p>
+			<p>l 微信支付收款服务</p>
+			<p>l 银行卡刷卡服务</p>
+			<p>l 现金收款的记账凭证</p>
+			<p>（三）收钱吧账户：是本公司向您提供的唯一编号。您可自行为该收钱吧账户设置密码，并用以查询或计量您的收款情况。您需使用本人电子邮箱或手机号码，或者本公司允许的其它方式，例如通过扫描二维码、支付宝账户联合登录、微信账户联合登录或识别生物特征的方式，作为登录手段登录该收钱吧账户。</p>
+			<p>（四）本网站：除本协议另有规定外，指www.shouqianba.com及/或相关移动客户端应用程序。</p>
+			<p>（五）第三方支付机构：特指“收钱吧”集成的第三方移动支付服务提供方，本合作协议特指持有央行牌照的合规第三方支付收单机构，如支付宝、腾讯、拉卡拉等支付企业。</p>
+			<p>三、“收钱吧”应用账户</p>
+			<p>（一）注册相关</p>
+			<p>除本协议另有规定或相关产品另有规则外，您须在本网站注册并取得本公司提供给您的收钱吧账户。您同意：</p>
+			<p>1、按照收钱吧要求准确提供并在取得该账户后及时更新您正确、最新及完整的身份信息及相关资料。若本公司有合理理由怀疑您提供的身份信息及相关资料错误、不实、过时或不完 整的，本公司有权暂停或终止向您提供部分或全部收钱吧服务。本公司对此不承担任何责任，您将承担因此产生的任何直接或间接支出。若因国家法律法规、部门规章或监管机构的 要求，本公司需要您补充提供任何相关资料时，如您不能及时配合提供，本公司有权暂停或终止向您提供部分或全部收钱吧服务。</p>
+			<p>2、您应当准确提供并及时更新您提供的电子邮件地址、联系电话、联系地址、邮政编码等联系方式，以便本公司与您进行及时、有效联系。您应完全独自承担因通过这些联系方式无 法与您取得联系而导致的您在使用本服务过程中遭受的任何损失或增加任何费用等不利后果。您理解并同意，您有义务保持您提供的联系方式的有效性，如有变更需要更新的，您应按本公司的要求进行操作。</p>
+			<p>3、您应及时更新资料（包括但不限于身份证、户口本、护照等证件或其他身份证明文件、联系方式、作为收钱吧账户登录名的邮箱或手机号码、与收钱吧账户绑定的邮箱、手机号码 等），否则收钱吧有权将收钱吧登录名、收钱吧账户绑定的邮箱、手机号码开放给其他用户注册或使用。因您未及时更新资料导致的一切后果，均应由您自行承担，该后果包括但不限于导致本服务无法提供或提供时发生任何错误、账户及账户内资金被别人盗用，您不得将此作为取消交易的理由。</p>
+
+			<p>4、若您为个人用户, 您确认, 本公司有权在出现下列情形时要求核对您的有效身份证件或其他必要文件, 并留存有效身份证件的彩色扫描件, 您应积极配合, 否则本公司有权限制或 停止向您提供部分或全部收钱吧服务:</p>
+			<p>A. 您要求变更身份信息或您身份信息已过有效期的;</p>
+			<p>B.本公司认为您的交易行为或交易情况出现异常的;</p>
+			<p>C.本公司认为您的身份资料存在疑点或本公司在向您提供服务的过程中认为您已经提供的身份资料存在疑点的;</p>
+			<p>D.本公司认为应核对或留存您身份证件或其他必要文件的其他情形的。</p>
+
+			<p>（二）账户安全</p>
+			<p>您将对使用该账户及密码、校验码进行的一切操作及言论负完全的责任，您同意：</p>
+			<p>1、本公司通过您的收钱吧登录名和密码识别您的指示，您应当妥善保管您的收钱吧登录名和密码及身份信息，对于因密码泄露、身份信息泄露所致的损失，由您自行承担。您保证不向其他任何人泄露您的收钱吧登录名及密码以及身份信息，亦不使用其他任何人的收钱吧登录名及密码。本公司亦可能通过本服务应用您使用的其他产品或设备识别您的指示，您应当妥善保管处于您或应当处于您掌控下的这些产品或设备，对于这些产品或设备遗失所致的任何损失，由您自行承担。</p>
+			<p>2、基于计算机端、手机端以及使用其他电子设备的用户使用习惯，我们可能在您使用具体产品时设置不同的账户登录模式及采取不同的措施识别您的身份。</p>
+			<p>3、您同意，（a）如您发现有他人冒用或盗用您的收钱吧登录名及密码或任何其他未经合法授权之情形，或发生与收钱吧账户关联的手机或其他设备遗失或其他可能危及到收钱吧账户资金安全情形时，应立即以有效方式通知本公司，向本公司申请暂停相关服务，以保障您的合法权益；及（b）确保您在持续登录任一本网站时段结束时，以正确步骤离开网站。本公司不能也不会对因您未能遵守本款约定而发生的任何损失、损毁及其他不利后果负责。您理解本公司对您的请求采取行动需要合理期限，在此之前，本公司对已执行的指令及(或)所导致的您的损失不承担任何责任。</p>
+			<p>4、您确认，您应自行对您的收钱吧账户负责，只有您本人方可使用该账户。该账户不可转让、不可赠与、不可继承，但账户内的相关财产权益可被依法继承。在您决定不再使用该账户时，您应将该账户内的可用款项全部提现或者转账到其他账户，并按本公司规定流程向本公司申请注销该账户。</p>
+			<p>5、您使用本服务时同意并认可，可能由于银行本身系统问题、银行相关作业网络连线问题或其他不可抗拒因素，造成本服务无法提供，对此本公司不承担任何责任。</p>
+			<p>6、您同意，基于运行和交易安全的需要，本公司可以暂时停止提供或者限制本服务部分功能,或提供新的功能，在任何功能减少、增加或者变化时，只要您仍然使用本服务，表示您 仍然同意本协议或者变更后的协议。</p>
+			<p>7、本公司有权了解您使用本公司产品或服务的真实交易背景及目的，您应如实提供本公司所需的真实、全面、准确的信息；如果本公司有合理理由怀疑您提供虚假交易信息的，本公 司有权暂时或永久限制您所使用的产品或服务的部分或全部功能。</p>
+			<p>8、您同意，本公司有权国家法律或和行政法规所赋予权力的有权机关的要求对您的个人信息以及在收钱吧的资金、交易及账户等进 行查询、冻结或扣划。</p>
+
+			<p>（三）注销相关</p>
+			<p>在需要终止使用本服务时,您可以申请注销您的收钱吧账户,您同意:</p>
+			<p>1、您所申请注销的收钱吧账户应当是您依照本协议的约定注册并由本公司提供给您本人的账户。您应当依照本公司规定的程序进行收钱吧账户注销。</p>
+			<p>2、收钱吧账户注销将导致本公司终止为您提供本服务，本协议约定的双方的权利义务终止（依本协议其他条款另行约定不得终止的或依其性质不能终止的除外），同时还可能对于该账户产生如下结果：</p>
+			<p>A、任何兑换代码（购物券、礼品券、集分宝或优惠券、天猫点券等任何与支付宝账户相关的兑换代码、卡券等）都将作废；如您不愿将该部分兑换代码或卡券消耗掉或将其作废，则您不能申请注销收钱吧账户。</p>
+			<p>B、任何银行卡将不能适用该账户内的提现服务。</p>
+			<p>3、您可以通过自助或者人工的方式申请注销收钱吧账户，但如果您使用了本公司提供的安全产品，应当在该安全产品环境下申请注销。</p>
+			<p>4、您申请注销的收钱吧账户应当处于正常状态，即您的收钱吧账户的账户信息和用户信息是最新、完整、正确的，且该账户可以使用所有收钱吧服务功能的状态。账户信息或用户信息过时、 缺失、不正确的账户或被暂停或终止提供服务的账户不能被申请注销。如您申请注销的账户有关联账户或子账户的，在该关联账户或子账户被注销前，该账户不得被注销。</p>
+			<p>5、您申请注销的收钱吧账户应当不存在任何由于该账户被注销而导致的未了结的合同关系与其他基于该账户的存在而产生或维持的权利义务，及本公司认为注销该账户会由此产生未了结的权利义务而产生纠纷的情况。</p>
+			<p>6、如果您申请注销的收钱吧账户一旦注销成功，将不再予以恢复。</p>
+
+			<p>四、收钱吧服务使用规则</p>
+			<p>为有效保障您使用本服务时的合法权益，您理解并同意接受以下规则：</p>
+			<p>（一）商户权利及义务</p>
+
+			<p>1、一旦您注册成为“收钱吧应用“客户，并在本公司提供的系统中提交您的相关信息，则视为您授权本公司在符合指定条件时，在约定的时间内，向您所指定的银行账号支付相关款项，并收取相应的结算服务费。您有权通过本公司的提供的系统对交易情况进行查询。</p>
+			<p>2、您的收银人员经过本公司培训后，方可使用收钱吧应用和POS机受理支付宝、微信支付及银行卡业务，您的人员因误操作导致错账的，本公司有权根据有关规定予以处理。本公司提供的培训包括但是不限于店面现场培训记录、远程在线培训记录、远程培训录音记录、本公司官方网站发布的相关内容要求等。</p>
+			<p>3、支付宝用户、微信用户及持卡人对交易产生异议的，您有义务配合并向本公司提供相关书面文件，包括但不限于签购单据和相关消费凭证等。您未能履行本义务而导致本公司遭受损失，您应向本公司赔偿相关损失。</p>
+			<p>4、您的收银人员在受理银行卡收款时，应按照本公司提供的操作指南进行操作，应仔细核对签购单上的持卡人亲笔签名与银行卡背面的预留签名是否一致，如发现签名不一致或卡片有伪造痕迹等其他任何疑问应拒绝交易并及时与本公司联系。对于可能出现的异常交易情况，您可以要求持卡人出示身份证明，以核实持卡人真实身份。您未按照要求受理银行卡而导致的经济损失，均由您承担。</p>
+			<p>5、当银行或收单机构要求调阅银行卡消费签购单据和相关消费凭证时，您应在三个工作日内提供相应复印件，并在收单机构要求时提供原件。</p>
+			<p>6、您应保证银行卡签购单上信息与商户消费凭证、银行卡等信息保持一致，并妥善保管持卡人签字确认的签购单及相关凭证至少一年以上。您在受理银行卡时所知悉的持卡人信息、资料应予以保密。</p>
+			<p>7、当发卡行或持卡人否认交易时，您应证明交易系持卡人本人交易。如因您无法提供证据或所提供证据不被银联、支付宝、或微信采信而导致发卡行或持卡人拒付的，您应向持卡人全额退款。</p>
+			<p>8、您需要对持卡人进行消费撤销或退货时，有权通过“收钱吧应用”机发起消费撤销或退货交易。如遇“收钱吧应用”或线路故障造成联机交易失败的,您也可通过本公司系统发起退款。</p>
+
+
+			<p>（二）收钱吧的权利与义务</p>
+			<p>1、本公司或其代理人负责向您的收银人员及其他相关人员提供必要的操作培训工作。本公司需提供交易明细查询系统，您可以在系统中对交易明细进行查询。</p>
+			<p>2、本公司有权依据业务经营的需要，在本公司官方网站公开告知后对业务进行调整。</p>
+			<p>3、本公司负责受理涉及支付结算的投诉并解决相应问题。本公司对于您与支付宝用户、微信用户和持卡人之间因为产品、服务等发生的纠纷不承担责任。</p>
+			<p>4、本公司有权监控您受理银行卡的交易地点，在您超出授权交易区域范围受理银行卡的情况下，本公司有权对本公司进行警告，甚至暂停或者停止向您提供服务，并对交易进行审查，您须予与配合。本公司有权对您的交易进行不定期抽查发现您在受理人民币卡过程中发生违规行为的，有权要求您限期整改。</p>
+			<p>5、本公司有权视您的经营状况，设定您的交易限额。</p>
+			<p>6、对于第三方（如银联、电信运营商等）原因造成无法完成交易的情况，本公司不承担违约责任，交易风险。</p>
+			<p>7、当您通过“收钱吧”应用进行交易时，因您未遵守本协议、本公司或其代理机构的培训、本公司官方网站的说明中的操作指示，本公司不保证交易会顺利完成，且不承担由此产生的损害赔偿责任。若因上述情况款项已先行汇入您的账户，您同意本公司有权从相关账户余额中扣回款项，此款项若已汇入您的支付宝账户、微信账户或银行账户，您同意本公司有权向您事后追索。</p>
+			<p>8、对于您发起的异常交易，本公司有权在您提供相关证明、澄清交易事实前，冻结您未结算的资金。遇下列任一情况时，本公司有权暂延支付交易款项，或从您以后交易款项中将有关款项扣回：</p>
+			<p>A、当本公司认为或怀疑您有任何违反本协议或存在欺诈行为的销售交易，如受理人民币卡时未留有持卡人签名或持卡人签名明显不符以及重复扣款、分单交易、套现等违规行为；</p>
+			<p>B、签购单上有不确切之处或没有得到持卡人或发卡行确认，或持卡人、发卡行对该笔消费提出异议；</p>
+			<p>C、您不按时对本公司所发出的交易调查进行反馈；</p>
+			<p>D、您不能按时对本公司所发出的交易调查提供相应证明材料；</p>
+			<p>E、您所涉及销售的商品或服务与中国法律法规有所抵触；</p>
+			<p>F、其他您未按本协议要求处理，导致支付宝、微信和发卡行拒付的交易。</p>
+			<p>9、您有违反本协议的其他行为的情况，本公司有权拒绝付款或从本公司账户扣收应赔偿的损失。</p>
+
+
+			<p>五、关于“收钱吧”服务的守法使用及用户承诺</p>
+			<p>1、您在使用本服务时应遵守中华人民共和国相关法律法规及所在国家或地区之法令及相关国际惯例，不得将本服务用于任何非法目的（包括用于禁止或限制物品的交易），也不能以任何非法方式使用本服务。</p>
+			<p>2、您在使用收钱吧服务时，必须遵守中华人民共和国相关法律法规的规定，应同意将不会利用本服务从事侵害他人合法权益之行为，以及进行任何违法或不正当的活动，否则本公司有权拒绝提供本服务，且您应承担因此产生的一切责任；本公司或本公司雇员或任何第三人合法权益因此受损的，您应承担损害赔偿责任。上述行为包括但不限于：</p>
+			<p>侵害他人名誉权、隐私权、商业秘密、商标权、著作权、专利权等合法权益。</p>
+			<p>违反依法定或约定之保密协议的。</p>
+			<p>从事不法交易行为，如洗钱、贩卖枪支、毒品、禁药、盗版软件、黄色淫秽物品以及其他本公司认为不得使用本服务进行交易的物品等。</p>
+			<p>非法使用他人银行账号（包括信用卡账号）或无效银行账号（包括信用卡账号）。</p>
+			<p>其他本公司有正当理由认为不适当之行为。</p>
+			<p>3、您违反本服务或相关的服务条款的规定，导致或产生的任何第三方主张的任何索赔、要求或损失，包括合理的律师费，您同意赔偿本公司及其合作公司、关联公司因此所受的全部损失，并使之免受损害。对此，本公司有权视您的行为性质，采取包括但不限于删除您发布信息内容、暂停使用许可、终止服务、限制使用、关闭收钱吧账号、追究法律责任等措施。对恶意注册收钱吧账号或利用收钱吧账号进行违法活动，捣乱、骚扰、欺骗其他用户以及其他违反本服务条款的行为，本公司有权关闭其账号。同时，本公司会视相关司法部门的要求，协助调查。</p>
+			<p>4、您不得将本服务任何部分或本服务之使用或获得，进行复制、拷贝、出售、转售或用于任何其它商业目的。</p>
+			<p>5、您应对自己在使用本服务过程中的行为承担法律责任。您承担法律责任的形式包括但不限于：赔偿因您行为受到损失的受损者，以及在本公司承担了因您行为导致的行政处罚或侵权损害赔偿责任后__7__日内给予本公司等额的赔偿。</p>
+			<p>6、服务费用：当您使用收钱吧服务时，支付机构（如支付宝、微信、银联）会向您收取相关服务费用。各项服务费用请详见您使用收钱吧服务时拉卡拉公司网站上所列之收费方式说明。拉卡拉公司保留制订及调整服务费之权利。如服务费调整，拉卡拉公司将以公告方式在拉卡拉公司网站予以公布，无需另行通知您；若您在服务费调整后继续使用本服务的，视为您接受服务费的调整。</p>
+			<p>您同意，除非另有约定，拉卡拉公司有权自为您代收的应向您支付的款项中先行扣除上述服务费用。</p>
+
+
+
+
+			<p>六、费用与结算</p>
+			<p>（一）、交易产生的所有智能手机通讯费用由您自行承担。</p>
+			<p>（二）、在账户正常的情况下，试用商户的支付宝、微信收款金额将自动进入账户余额，可提现到对应的结算账户上，提现的资金在申请后的下一个工作日到账。当商户的支付宝和微信支付申请成为正式商户后，支付宝收款资金将实时进入商户的支付宝账户，微信收款资金将T+1自动结算到商户银行账户中，银行卡交易将T+1自动结算到商户银行账户中。</p>
+			<p>（三）、您如对支付宝、微信和POS业务账务处理有疑问，可向本公司提出询问，或填写申述送报本公司。本公司应在收到询问或申述单后七个工作日内答复。</p>
+
+
+
+			<p>七、系统中断或故障</p>
+			<p>本公司系统因下列状况无法正常运作，使您无法使用各项服务时，本公司不承担损害赔偿责任，该状况包括但不限于：</p>
+			<p>（一）本公司在本网站公告之系统停机维护期间。</p>
+			<p>（二）电信设备出现故障不能进行数据传输的。</p>
+			<p>（三）因台风、地震、海啸、洪水、停电、战争、恐怖袭击等不可抗力之因素，造成本公司系统障碍不能执行业务的。</p>
+			<p>（四）由于黑客攻击、电信部门技术调整或故障、网站升级、银行方面的问题等原因而造成的服务中断或者延迟。</p>
+
+
+			<p>八、责任范围及责任限制</p>
+			<p>（一）本公司仅对本协议中列明的责任承担范围负责。</p>
+			<p>（二）您明确因交易所产生的任何风险应由您与交易对方承担。</p>
+			<p>（三）收钱吧商户信息是由用户本人自行提供的，本公司无法保证该信息之准确、及时和完整，您应对您的判断承担全部责任。</p>
+			<p>（四）本公司不对交易标的及本服务提供任何形式的保证，包括但不限于以下事项：</p>
+			<p>1、本服务符合您的需求。</p>
+			<p>2、本服务不受干扰、及时提供或免于出错。</p>
+			<p>3、您经由本服务购买或取得之任何产品、服务、资讯或其他资料符合您的期望。</p>
+			<p>（五）本服务之合作单位，所提供之服务品质及内容由该合作单位自行负责。</p>
+			<p>（六）您经由本服务之使用下载或取得任何资料，应由您自行考量且自负风险，因资料之下载而导致您电脑系统之任何损坏或资料流失，您应负完全责任。</p>
+			<p>（七）您自本公司及本公司工作人员或经由本服务取得之建议和资讯，无论其为书面或口头形式，均不构成本公司对本服务之保证。</p>
+			<p>（八）在法律允许的情况下，本公司对于与本协议有关或由本协议引起的任何间接的、惩罚性的、特殊的、派生的损失（包括业务损失、收益损失、利润损失、商誉损失、使用数据 或其他经济利益的损失），不论是如何产生的，也不论是由对本协议的违约（包括违反保证）还是由侵权造成的，均不负有任何责任，即使事先已被告知此等损失的可能性。另外即使本协议 规定的排他性救济没有达到其基本目的，也应排除本公司对上述损失的责任。</p>
+			<p>（九）除本协议另有规定外，在任何情况下，本公司对本协议所承担的违约赔偿责任总额不超过向您收取的当次服务费用总额。</p>
+			<p>（十）您充分知晓并同意本公司可能同时为您及您的（交易）对手方提供本服务，您同意对本公司可能存在的该等行为予以明确豁免，并不得以此来主张本公司在提供本服务时存在 法律上的瑕疵。</p>
+			<p>（十一）除本协议另有规定或本公司另行同意外，您对本公司的委托及向本公司发出的指令均不可撤销。</p>
+
+
+			<p>九、商标、知识产权的保护</p>
+			<p>（一） 本网站上所有内容，包括但不限于著作、图片、档案、资讯、资料、网站架构、网站画面的安排、网页设计，均由本公司或本公司关联企业依法拥有其知识产权，包括但不限于商标权 、专利权、著作权、商业秘密等。</p>
+			<p>（二） 非经本公司或本公司关联企业书面同意，任何人不得擅自使用、修改、复制、公开传播、改变、散布、发行或公开发表本网站程序或内容。</p>
+			<p>（三） 尊重知识产权是您应尽的义务，如有违反，您应承担损害赔偿责任。</p>
+
+
+			<p>十、法律适用与管辖</p>
+			<p>本协议之效力、解释、变更、执行与争议解决均适用中华人民共和国法律，没有相关法律规定的，参照通用国际商业惯例和（或）行业惯例。因本协议产生之争议，均应依照中华人民共和国 法律予以处理，并以被告住所地人民法院为第一审管辖法院。</p>
+		</div>
+		<div class='agreement_bottom'>
+			<div class='check_box'>
+				<div id='click_area'>
+
+				</div>
+				<span>我已阅读并同意此服务协议
+			</div>
+				<button id='agreement_btn'>同意并提交</button>
+		</div>
+	</div>
+	<div id='pop_window' hidden>
+		<div class='pop_title'>感谢您选择成码科技，请选择属于您的区域专员</div>
+		<div class='pop_bottom'>
+			<span class='pull_left btn' style='border-right:1px solid #e0e0e0;'>取消</span>
+			<span class='pull_right btn'>确定</span>
+		</div>
+	</div>
+	<!-- pop_window 取消弹出 -->
+	<div id='cancle_pop' hidden>
+		<div class='pop-item'>
+			<span>服务热线:<span style='margin-left:20px;'>010-39698744</span></span>
+			<img src='resource/images/phone.png' class='pic_phone'>
+		</div>
+	</div>
+	<!-- pop_window 确定弹出 -->
+	<div id='confirm_pop' hidden>
+		<div class='container'>
+			<div class='choose_list'>
+				<div class='headimg'><img src='resource/images/man.png'></div>
+				<div class='information'>
+					<span>姓名：李春波</span>
+					<span class='span_item_2'>职位：BD</span>
+					<div class='div_item'>手机号：17746564447</div>
+					<div>邮箱：2909261128@qq.com</div>
+					<div id='man_id' hidden>3</div>
+					<button class='chosse_people'>选TA</button>
+				</div>
+			</div>
+			<div class='choose_list'>
+				<div class='headimg'><img src='resource/images/man.png'></div>
+				<div class='information'>
+					<span>姓名：李春波</span>
+					<span class='span_item_2'>职位：BD</span>
+					<div class='div_item'>手机号：17746564447</div>
+					<div>邮箱：2909261128@qq.com</div>
+					<div id='man_id' hidden>4</div>
+					<button class='chosse_people'>选TA</button>
+				</div>
+			</div>
+			<div class='choose_list'>
+				<div class='headimg'><img src='resource/images/man.png'></div>
+				<div class='information'>
+					<span>姓名：李春波</span>
+					<span class='span_item_2'>职位：BD</span>
+					<div class='div_item'>手机号：17746564447</div>
+					<div>邮箱：2909261128@qq.com</div>
+					<div id='man_id' hidden>5</div>
+					<button class='chosse_people'>选TA</button>
+				</div>
+			</div>
+		</div>
+		<div class='change_btn'>
+			<img src='resource/images/switchbtn.png' style='margin-right:8px;margin-bottom:-5px;'>换一换
+		</div>
+	</div>
+	<!-- 选择BD人弹窗 -->
+	<div id='BD_window' hidden>
+		<div class='pop_title' style='line-height: 136px;'>您选中<span id='BD_name'></span>为您的BD</div>
+		<div class='pop_bottom'>
+			<span class='BD_left btn' style='border-right:1px solid #e0e0e0;'>取消</span>
+			<span class='BD_right btn'>确定</span>
+		</div>
+	</div>
+	<!-- 选择BD人弹窗 确定后-->
+	<div id='BD_finish' hidden>
+		<div class='finish_tip'>
+			感谢您选择成码科技，区域专员稍后与您联系。
+		</div>
+		<div id='share'>分享</div>
+	</div>
+	<div id='choose_aggrement' hidden>
+		<div class='pop_title' style='line-height: 136px;'>请先阅读并同意协议</div>
+		<div class='pop_bottom'>
+			<span class='confirm_btn btn'>确定</span>
+		</div>
+	</div>
+	<div id='cover' hidden>
+		<img src='resource/images/share.png' class='share_pic'>
+	</div>
+<script type="text/javascript">
+	var PeopleId;
+	var PeopleName;
+	$.ajax({
+		url: 'https://shop.dataguiding.com/wxapi/netBankRequestOne.action?url='+encodeURIComponent(window.location.href),
+		success: function(data) {
+
+			wx.config({
+				debug: false,
+				appId: data.appId,
+				timestamp: data.timestamp,
+				nonceStr: data.nonceStr,
+				signature: data.signature,
+				jsApiList: ['chooseImage', 'uploadImage','onMenuShareTimeline', 'onMenuShareAppMessage']
+			});
+		},
+		dataType:'jsonp'
+
+	});
+	var images = { 
+		localId: [], 
+		serverId: [] 
+	};
+	var list = {
+		localId: [], 
+		serverId: [] 
+	}
+	//获取验证码
+	var InterValObj; //timer变量，控制时间  
+	var count = 120; //间隔函数，1秒执行  
+	var curCount;//当前剩余秒数  
+	var code = ""; //验证码  
+	function sendMessage() { 
+		var myreg = /^(((13[0-9])|(14[5|7])|(15([0-3]|[5-9]))|(17([0,1,3]|[6-8]))|(18[0-9]))+\d{8})$/;
+		curCount = count;  
+	    var phone=$("#phone").val();//手机号码  
+	    if(myreg.test(phone)){    
+	        //设置button效果，开始计时  
+	        $(".code").attr("disabled", "true");  
+	        $(".code").html(curCount + "秒");  
+	        InterValObj = window.setInterval(SetRemainTime, 1000); //启动计时器，1秒执行一次  
+	    	//向后台发送处理数据  
+	    	$.ajax({
+	    		type:'POST',
+	    		url:'message.php',
+	    		data:{
+	    			mobile:phone
+	    		},
+	    		dataType:'json',
+	    		success:function(data){
+	    			if(data.status=='success'){
+	    				$.alert('验证码发送成功，请注意查收')
+	    			}else{
+	    				$.alert(data.message)
+	    			}
+
+	    		},
+	    	});  
+	    }else{  
+	    	$.alert("手机号码格式不正确！");  
+	    }  
+	}  
+	//timer处理函数  
+	function SetRemainTime() {  
+		if (curCount == 0) {                  
+	        window.clearInterval(InterValObj);//停止计时器  
+	        $(".code").removeAttr("disabled");//启用按钮  
+	        $(".code").html("获取验证码");  
+	        code = ""; //清除验证码。如果不清除，过时间后，输入收到的验证码依然有效      
+	    }  
+	    else {  
+	    	curCount--;  
+	    	$(".code").html(curCount + "秒");  
+	    }  
+	}  
+
+	var obj;
+	wx.ready(function(){
+		wx.onMenuShareTimeline({
+            title: '成码科技移动支付', // 分享标题
+            link: 'http://g.eqxiu.com/s/MOL4ZS0D?eqrcode=1', // 分享链接
+            imgUrl: '', // 分享图标
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+		wx.onMenuShareAppMessage({
+            title: '成码科技移动支付', // 分享标题
+            desc: '支付，也是一种营销方式', // 分享描述
+            link: 'http://g.eqxiu.com/s/MOL4ZS0D?eqrcode=1', // 分享链接
+            imgUrl: '', // 分享图标
+            type: '', // 分享类型,music、video或link，不填默认为link
+            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+            success: function () {
+                // 用户确认分享后执行的回调函数
+            },
+            cancel: function () {
+                // 用户取消分享后执行的回调函数
+            }
+        });
+		var total=1;/*限制上传的数量*/
+		add_front.onclick=function(){
+			wx.chooseImage({
+				count:1,/*默认为9*/
+	            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+	            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+	            success:function(res){	
+	            	images.localId=res.localIds;/*保存到images*/
+			            // alert(res.localIds)
+			            $('#add_front').hide();
+			            $('.tip1').hide();
+			            $(".img_show1").show();
+			            $(".img_show1").attr('src',res.localIds[0]);
+
+			            /*上传图片到微信服务器*/
+			            wxupload();
+			        }
+			    });	
+		}
+		function wxupload(){
+			wx.uploadImage({
+                	localId: images.localId[0],// 需要上传的图片的本地ID，由chooseImage接口获得
+	                //isShowProgressTips: 1, // 默认为1，显示进度提示
+	                success: function (res) {
+	                    //将上传成功后的serverId保存到serverid  
+	                    images.serverId.push(res.serverId);
+	                    // alert(res.serverId);
+	                    // if(images.serverId.length>0){
+	                    //     wxupload();
+	                    // }
+	                    // wxupload();
+	                    console.log(images.serverId);
+	                    $('#front').val(res.serverId);
+	                }
+	            });
+		}
+		add_back.onclick=function(){
+			wx.chooseImage({
+				count:1,/*默认为9*/
+	            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+	            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+	            success:function(res){	
+	            	list.localId=res.localIds;/*保存到images*/
+	            	var ol = res.localIds;
+			            // alert(res.localIds)
+			            $('#add_back').hide();
+			            $('.tip2').hide();
+			            $(".img_show2").show();
+			            $(".img_show2").attr('src',res.localIds);
+
+			            /*上传图片到微信服务器*/
+			            wxupload1();
+			        }
+			    });	
+		}
+		function wxupload1(){
+			wx.uploadImage({
+            	localId:list.localId[0],// 需要上传的图片的本地ID，由chooseImage接口获得
+                //isShowProgressTips: 1, // 默认为1，显示进度提示
+                success: function (res) {
+                    //将上传成功后的serverId保存到serverid  
+                    images.serverId.push(res.serverId);
+                    // alert(res.serverId);
+                    // if(images.serverId.length>0){
+                    //     wxupload();
+                    // }
+                    // wxupload();
+                    console.log(images.serverId);
+                    $('#back').val(res.serverId);
+                }
+            });
+		} 	
+		add_license.onclick=function(){
+			wx.chooseImage({
+				count:1,/*默认为9*/
+	            sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+	            sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+	            success:function(res){	
+	            	list.localId=res.localIds;/*保存到images*/
+	            	var ol = res.localIds;
+			            // alert(res.localIds)
+			            $('#add_license').hide();
+			            $('.tip3').hide();
+			            $(".img_show3").show();
+			            $(".img_show3").attr('src',res.localIds);
+
+			            /*上传图片到微信服务器*/
+			            wxupload2();
+			        }
+			    });	
+		}
+		function wxupload2(){
+			wx.uploadImage({
+            	localId:list.localId[0],// 需要上传的图片的本地ID，由chooseImage接口获得
+                //isShowProgressTips: 1, // 默认为1，显示进度提示
+                success: function (res) {
+                    //将上传成功后的serverId保存到serverid  
+                    images.serverId.push(res.serverId);
+                    // alert(res.serverId);
+                    // if(images.serverId.length>0){
+                    //     wxupload();
+                    // }
+                    // wxupload();
+                    console.log(images.serverId);
+                    $('#license').val(res.serverId);
+                }
+            });
+		}
+	});
+
+
+	wx.error(function(res){
+		alert(res.errMsg);
+	});
+	$('.pic_bottom').click(function(){
+
+		if($('#name').val().length==0){
+			$.alert('请填写姓名')
+		}else if($('#name').val().length>10){
+			$.alert('姓名长度不能大于10')
+		}else if($('#phone').val().length==0){
+			$.alert('请填写手机号')
+		}else if($('#code').val().length==0){
+			$.alert('请填写验证码')
+		}else if($('#code').val().length>6){
+			$.alert('验证码必须是6位数字')
+		}else if($('#front').val().length==0){
+			$.alert('请上传身份证前面照片')
+		}else if($('#back').val().length==0){
+			$.alert('请上传身份证后面照片')
+		}else{
+			$('#regisiter').hide();
+			$('#agreement').show();
+		}
+
+	})
+	$('#click_area').html('');
+	$('#click_area').click(function(){
+    	// var src = $(this).children('.select').attr('src');
+    	// if(src.length == 0){
+    	// 	$(this).children('.select').attr('src','resource/images/Selected.png');
+    	// }else{
+    	// 	$(this).children('.select').attr('src','');
+    	// }
+    	var ele = "<img src='resource/images/Selected.png' class='select'>";
+    	if($(this).html().length == 0){
+    		$(this).append(ele);
+    	}else{
+    		$(this).html('');
+    		$(this).empty();
+    	}
+    })
+
+	$('#agreement_btn').click(function(){
+		var name = $('#name').val();
+		var phone = $('#phone').val();
+		var Code = $('#code').val();
+		var ID_card_front = $('#front').val();
+		var ID_card_back = $('#back').val();
+		$(this).css('color','#fff');
+		var flag = $('#click_area').html();
+		if(flag.length == 0){
+			agreement_index = layer.open({
+				type: 1,
+				title:'',
+			                 skin: 'layui-layer-demo', //样式类名
+			                 closeBtn: 0, //不显示关闭按钮
+			                 shift: 2,
+			                 shadeClose: false, //开启遮罩关闭
+			                 area : ["540px" , '260px'],
+			                 content:$('#choose_aggrement'),
+			             }); 
+		}else{
+			var data = {
+				name:name,
+				mobile:phone,
+				code:Code,
+				ID_card_front_serveID:ID_card_front,
+				ID_card_back_serveID:ID_card_back,
+			}
+			$('#license').val() ? data['license_serveID'] = $('#license').val() : 1;
+			$.ajax({
+				type:'POST',
+				url:'submit2.php',
+				data:data,
+				dataType:'json',
+				success: function(result){
+					PeopleId = result.id;
+					if(result.status=="success"){
+						index = layer.open({
+							type: 1,
+							title:'',
+					                 skin: 'layui-layer-demo', //样式类名
+					                 closeBtn: 0, //不显示关闭按钮
+					                 shift: 2,
+					                 shadeClose: false, //开启遮罩关闭
+					                 area : ["540px" , '260px'],
+					                 content:$('#pop_window'),
+					             });  
+					}else{
+						$.alert(result.message);
+						$('#regisiter').show();
+						$('#agreement').hide();
+					}
+				}
+			}); 					
+		}
+	})
+	$('.confirm_btn').click(function(){
+		layer.close(agreement_index);
+	})
+	$('.pull_left').click(function(){
+		layer.close(index);
+		$('#agreement_btn').css('color','#757575');
+		$('#agreement').hide();
+		$('#cancle_pop').show();
+	})
+	$('.pic_phone').click(function(){
+		window.location.href="tel:010-39698744";
+	})
+
+	$('.pull_right').click(function(){
+		$.ajax({
+			type:'POST',
+			url:'bd_get.php',
+			dataType:'json',
+			success: function(result){
+				if(result.status=="success"){
+					$('.container').html('');
+					var data = result.data;
+					for(var i=0;i<data.length;i++){
+						var ele = '<div class="choose_list">'+
+						'<div class="headimg">'+
+						'<img src="resource/images/heads/'+data[i].id+'.png">'+
+						'</div>'+
+						'<div class="information">'+
+						'<span>姓名：'+data[i].name+'</span>'+
+						'<span class="span_item_2">职位：'+data[i].work+'</span>'+
+						'<div class="div_item">手机号：'+data[i].mobile+'</div>'+
+						'<div>邮箱：'+data[i].email+'</div>'+
+						'<div id="man_name" hidden>'+data[i].name+'</div>'+
+						'<button class="chosse_people">选TA</button>'+
+						'</div>'+
+						'</div>';
+						$('.container').append(ele);
+					}
+					layer.close(index);
+					$('#agreement').hide();
+					$('#confirm_pop').show();
+				}else{
+					$.alert(result.message);	
+				}
+			}
+		});
+	});
+    //换一批
+    $('.change_btn').click(function(){
+    	$.ajax({
+    		type:'POST',
+    		url:'bd_get.php',
+    		dataType:'json',
+    		success: function(result){
+    			if(result.status=="success"){
+    				$('.container').html('');
+    				var data = result.data;
+    				for(var i=0;i<data.length;i++){
+    					var ele = '<div class="choose_list">'+
+    					'<div class="headimg">'+
+    					'<img src="resource/images/heads/'+data[i].id+'.png">'+
+    					'</div>'+
+    					'<div class="information">'+
+    					'<span>姓名：'+data[i].name+'</span>'+
+    					'<span class="span_item_2">职位：'+data[i].work+'</span>'+
+    					'<div class="div_item">手机号：'+data[i].mobile+'</div>'+
+    					'<div>邮箱：'+data[i].email+'</div>'+
+    					'<div id="man_name" hidden>'+data[i].name+'</div>'+
+    					'<button class="chosse_people">选TA</button>'+
+    					'</div>'+
+    					'</div>';
+    					$('.container').append(ele);
+    				}
+    			}else{
+    				$.alert(result.message);	
+    			}
+    		}
+    	});
+    })
+    $('#confirm_pop').on('click','.chosse_people',function(){
+    	PeopleName = $(this).siblings('#man_name').html();
+    	$('#BD_name').html(PeopleName);
+    	BD_index = layer.open({
+    		type: 1,
+    		title:'',
+	                 skin: 'layui-layer-demo', //样式类名
+	                 closeBtn: 0, //不显示关闭按钮
+	                 shift: 2,
+	                 shadeClose: false, //开启遮罩关闭
+	                 area : ["540px" , '260px'],
+	                 content:$('#BD_window'),
+	             });  
+    });
+    $('.BD_right').click(function(){
+    	$.ajax({
+    		type:'POST',
+    		url:'bd_change.php',
+    		data:{
+    			id:PeopleId,
+    			name:PeopleName
+    		},
+    		dataType:'json',
+    		success: function(result){
+    			if(result.status=="success"){
+    				layer.close(BD_index);
+    				$('#confirm_pop').hide();
+    				$('#BD_finish').show();
+    			}else{
+    				$.alert(result.message);	
+    			}
+    		}
+    	}); 
+    });
+    $('.BD_left').click(function(){
+    	layer.close(BD_index);
+    })
+    $('#share').click(function(){
+    	$('#cover').show();
+    })
+	</script>
+	<script>
+	var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+	document.write(unescape("%3Cspan id='cnzz_stat_icon_1261123689'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1261123689' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+</body>
+</html>

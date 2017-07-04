@@ -1,0 +1,46 @@
+<html>
+<head>
+	<title>用户注册</title>
+	<meta name="viewport" content="width=750, user-scalable=no">
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="resource/css/readme.css">
+	<script src="resource/js/jquery.min.js"></script>
+</head>
+<body>
+<div id='bd_list'>
+	<div class='container_list'>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+		$.ajax({
+               	type:'POST',
+               	url:'bd_get.php?all=1',
+               	dataType:'json',
+              	success: function(result){
+          				if(result.status=="success"){
+          					$('.container').html('');
+          					var data = result.data;
+          					for(var i=0;i<data.length;i++){
+          						var ele = '<div class="choose_list">'+
+											'<div class="headimg">'+
+												'<img src="resource/images/heads/'+data[i].id+'.png">'+
+											'</div>'+
+											'<div class="information">'+
+												'<span>姓名：'+data[i].name+'</span>'+
+												'<span class="span_item_2">职位：'+data[i].work+'</span>'+
+												'<div class="div_item">手机号：'+data[i].mobile+'</div>'+
+												'<div>邮箱：'+data[i].email+'</div>'+
+												'<div id="man_name" hidden>'+data[i].name+'</div>'+
+												'<a href="http://shop.dataguiding.com/pay/"><button class="chosse_people">选TA</button></a>'+
+											'</div>'+
+										'</div>';
+								$('.container_list').append(ele);
+							}
+          				}else{
+          					$.alert('数据载入失败')
+          				}
+          		}
+        });
+</script>
+</html>
